@@ -1,0 +1,26 @@
+.snackbar-container { 
+    position:fixed;
+    top:0;
+    right:0;
+    margin:20px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.snackbar-container > p {
+    margin: 20px 100px;
+}
+
+.timer {
+    background-color: blue;
+    width:0%;
+    height:10px;
+    animation: timershrink 15s 1;
+}
+
+@keyframes timershrink {
+    0% {width:100%}
+    100% {
+        width:0%;
+    }
+}

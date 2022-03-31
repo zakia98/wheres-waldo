@@ -1,0 +1,8 @@
+.leaderboard-container {
+    height: 80%;
+    width:80%;
+    position:absolute;
+    top:center;
+    left: center;
+    background-color: white;
+}
