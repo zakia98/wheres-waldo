@@ -2,7 +2,7 @@ import React from 'react';
 import './Leaderboard.css'
 import { getFirestore, collection, updateDoc, arrayUnion } from 'firebase/firestore';
 import { doc, getDoc } from 'firebase/firestore'
-import { initFirebase } from './firebase-config';
+import { initFirebase } from '../firebase-config';
 import { useEffect, useState } from 'react';
 
 export default function Leaderboard(props) {
@@ -15,7 +15,7 @@ export default function Leaderboard(props) {
             const data = await docSnap.data()
             const sortedData = data.leaderboardArray.sort((a, b) => a.time - b.time)
             console.log(sortedData)
-            setLeaderboard(prevState => sortedData)
+            setLeaderboard(prevState => sortedData.slice(0,5))
         }
         getLeaderboard()
     }, [])
@@ -34,9 +34,6 @@ export default function Leaderboard(props) {
             leaderboardArray: arrayUnion({name:name, time:props.time/1000})
         })
     }
-    
-    
-
 
     if (props.show) {
         return(
@@ -45,8 +42,12 @@ export default function Leaderboard(props) {
                 <button onClick={props.retry}>Retry</button>
                 <button onClick={submitHighscore}>Submit highscore to Database!</button>
                 <div>
+                    Top 5 Highscores:
                     {leaderboard.map(highscore => {
-                        return <p>Name: {highscore.name} Time: {highscore.time}</p>
+                        return (<div className="highscore">
+                                    <p>{highscore.name}</p>
+                                    <p>Time: {highscore.time}</p>
+                                </div>)
                     })}
                 </div>
             </div>
