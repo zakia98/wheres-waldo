@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import './App.css';
 import image from './images/img2.webp'
 import {MDCMenu} from '@material/menu';
-import GameImage from './GameImage'
+import GameImage from './components/GameImage'
 import { between } from './helpers'
 import { getFirestore, collection } from 'firebase/firestore';
 import { doc, getDoc } from 'firebase/firestore'
 import { initFirebase } from './firebase-config';
-import SnackBar from './SnackBar';
-import Leaderboard from './Leaderboard';
+import SnackBar from './components/SnackBar';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   
